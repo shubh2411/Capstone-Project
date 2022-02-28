@@ -18,9 +18,10 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
+
 import { numberWithCommas } from "./Carousel";
 import { cryptoState } from "./CryptoContext";
+import { useHistory } from "react-router-dom";
 // import Pagination from "./Pagination";
 
 const useStyles = makeStyles(() => ({
@@ -85,7 +86,7 @@ function CoinsTable() {
 
   useEffect(() => {
     fetchCoinsList();
-  }, []);
+  }, [selectedValue]);
 
   const handleSearch = () => {
     return coins.filter(
@@ -95,7 +96,7 @@ function CoinsTable() {
     );
   };
 
-  const navigate = useNavigate();
+  const history = useHistory();
   // console.log(coins);
   if(loading) {
     return <LinearProgress />
@@ -146,7 +147,7 @@ function CoinsTable() {
                     return (
                       <TableRow
                         className={classes.row}
-                        onClick={() => navigate(`/coins/${row.id}`)}
+                        onClick={() => history.push(`/coins/${row.id}`)}
                         key={row.name}
                       >
                         <TableCell

@@ -7,7 +7,7 @@ const Crypto = createContext();
 
 function CryptoContext({ children }) {
   const [currency, setCurrency] = useState([]);
-  const [symbol, setSymbol] = useState("Rs.");
+  const [symbol, setSymbol] = useState("INR");
   const [selectedValue, setSelectedValue] = useState("inr");
   const [user, setUser] = useState(null);
   const [alert, setAlert] = useState({
@@ -43,6 +43,7 @@ function CryptoContext({ children }) {
       value={{
         currency,
         symbol,
+        setSymbol,
         selectedValue,
         setSelectedValue,
         setCurrency,

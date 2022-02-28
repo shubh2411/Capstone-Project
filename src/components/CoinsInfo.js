@@ -28,14 +28,14 @@ const darkTheme = createTheme({
   });
   
 const CoinsInfo = ({ coin, id }) => {
-    console.log(coin)
+    // console.log(coin)
   const [historicalData, setHistoricalData] = useState([]);
   const [days, setDays] = useState(1);
   const { currency, selectedValue } = cryptoState();
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      width: "75%",
+      width: "85%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -66,7 +66,7 @@ const CoinsInfo = ({ coin, id }) => {
     fetchHistoricalData();
   }, [days, selectedValue]);
 
-  console.log(coin);
+//   console.log(coin);
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -78,7 +78,7 @@ const CoinsInfo = ({ coin, id }) => {
             thickness={1}
           />
         ) : (
-          <div>
+          <>
             {/* Line Chart */}
             <Line
               data={{
@@ -128,7 +128,7 @@ const CoinsInfo = ({ coin, id }) => {
                 </SelectButton>
               ))}
             </div>
-          </div>
+          </>
         )}
       </div>
     </ThemeProvider>

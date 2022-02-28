@@ -20,9 +20,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
   },
 
-  tabs : {
-    
-  }
+  tabs: {},
 }));
 
 function AuthModal() {
@@ -79,9 +77,11 @@ function AuthModal() {
                 value={value}
                 onChange={handleChange}
                 aria-label="User Authentication"
-                style={{ borderRadius: 10, display: "flex",
-                justifyContent: "space-around" }}
-                
+                style={{
+                  borderRadius: 10,
+                  display: "flex",
+                  justifyContent: "space-around",
+                }}
               >
                 <Tab label="Login" />
                 <Tab label="SignUp" />

@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { cryptoState } from "./CryptoContext";
 import AuthModal from "./Auth/AuthModal"
 import Logout from "./Auth/Logout";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -39,12 +40,13 @@ const darkTheme = createTheme({
 
 function Navbar() {
   const classes = useStyles();
-  const { currency, setCurrency, selectedValue, setSelectedValue, user } = cryptoState();
+  const { currency, setSymbol, selectedValue, setSelectedValue, user } = cryptoState();
 
-  const navigate = useNavigate();
+  const history = useHistory();
   const handleChange = (e) => {
     // setCurrency(e.target.value)
     setSelectedValue(e.target.value)
+    // setSymbol(selectedValue.toUpperCase())
   }
 
   return (
@@ -52,7 +54,7 @@ function Navbar() {
       <AppBar color="transparent" position="static">
       <Container>
           <Toolbar>
-            <Typography onClick={() => navigate("/")} className={classes.title}>
+            <Typography onClick={() => history.push("/")} className={classes.title}>
               Crypto Tracker
             </Typography>
 

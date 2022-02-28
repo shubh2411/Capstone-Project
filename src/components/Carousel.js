@@ -13,27 +13,28 @@ export function numberWithCommas(x) {
 
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
-  const { currency, symbol } = cryptoState();
+  const { currency, symbol, selectedValue } = cryptoState();
 
   const fetchTrendingCoins = async () => {
     const { data } = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&sparkline=false&price_change_percentage=24`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${selectedValue}&sparkline=false&price_change_percentage=24`
     );
 
-    console.log(data);
+    // console.log(data);
     setTrending(data);
   };
 
   useEffect(() => {
     fetchTrendingCoins();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currency]);
+  }, [selectedValue]);
 
   const useStyles = makeStyles((theme) => ({
     carousel: {
       height: "50%",
       display: "flex",
       alignItems: "center",
+      marginTop: "50px"
     },
     carouselItem: {
       display: "flex",
@@ -42,6 +43,7 @@ const Carousel = () => {
       cursor: "pointer",
       textTransform: "uppercase",
       color: "white",
+      textDecoration: "none"
     },
   }));
 
@@ -72,7 +74,7 @@ const Carousel = () => {
           </span>
         </span>
         <span style={{ fontSize: 22, fontWeight: 500 }}>
-          {symbol} {numberWithCommas(coin?.current_price.toFixed(2))}
+          {selectedValue.toUpperCase()} {numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
       </Link>
     );

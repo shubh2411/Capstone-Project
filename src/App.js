@@ -1,5 +1,8 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router,
+  Switch,
+  Route,
+  Link} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CoinsData from "./pages/CoinsData";
 import Home from "./pages/Home";
@@ -8,14 +11,18 @@ import Alert from "./components/Auth/Alert";
 
 function App() {
   return (
-    <BrowserRouter>
-    <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/coins/:id" element={<CoinsData />} />
-      </Routes>
-      <Alert></Alert>
-    </BrowserRouter>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" >
+          <Home />
+        </Route>
+        <Route path="/coins/:id" >
+          <CoinsData />
+        </Route>
+      </Switch>
+      <Alert />
+    </Router>
   );
 }
 

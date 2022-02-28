@@ -10,18 +10,17 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "/dist"),
     filename: "bundle.js",
-    publicPath: '/dist'
+    publicPath: "/dist",
   },
-//   resolve: {
-//     alias: {
-//       'react-dom': '@hot-loader/react-dom'
-//     }
-// },
+  resolve: {
+    alias: {
+      "react-dom": "@hot-loader/react-dom",
+    },
+  },
 
   devtool: "inline-source-map",
 
   module: {
-
     rules: [
       // First Rule
       {
@@ -35,24 +34,27 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      // thirs rule
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "file-loader",
+      },
     ],
-
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
-      favicon: 'public/favicon.ico'
+      template: "public/index.html",
+      favicon: "public/favicon.ico",
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
-  
+
   devServer: {
-    host: 'localhost',
+    host: "localhost",
     port: port,
     historyApiFallback: true,
     open: true,
-    hot: true
-  }
-
+    hot: true,
+  },
 };
