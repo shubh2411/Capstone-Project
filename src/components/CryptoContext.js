@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../fireBase";
+
 const Crypto = createContext();
 
 function CryptoContext({ children }) {
@@ -16,7 +17,7 @@ function CryptoContext({ children }) {
   });
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user)=> {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {

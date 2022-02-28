@@ -1,6 +1,6 @@
 import { Container, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-const image = require("../../crypto.jpg")
+// const image = require("../../crypto.jpg")
 import Carousel from "./Carousel";
 
 // import img from './file.png';
@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
 
   banner: {
     // backgroundImage: "url(../../crypto.jpg)",
-    backgroundImage: `url(${image})`,
+    // backgroundImage: `url(${image})`,
     // backgroundColor: "pink",
     backgroundSize: "cover",
     opacity: "0.8",

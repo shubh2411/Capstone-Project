@@ -60,6 +60,7 @@ const darkTheme = createTheme({
   },
 });
 
+
 function CoinsTable() {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -84,7 +85,7 @@ function CoinsTable() {
 
   useEffect(() => {
     fetchCoinsList();
-  }, [selectedValue]);
+  }, []);
 
   const handleSearch = () => {
     return coins.filter(
@@ -137,7 +138,7 @@ function CoinsTable() {
               </TableHead>
 
               <TableBody>
-                {handleSearch()
+                {coins && handleSearch()
                   .slice(indexofFirstCoin, indexOfLastCoin)
                   .map((row) => {
                     const profit = row.price_change_percentage_24h >= 0;

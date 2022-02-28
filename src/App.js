@@ -9,7 +9,7 @@ import Alert from "./components/Auth/Alert";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+    <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/coins/:id" element={<CoinsData />} />
